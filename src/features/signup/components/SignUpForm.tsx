@@ -1,8 +1,7 @@
 import { Stack } from "@mui/material";
 import { Colors } from "../../../theme/Colors";
-import { SignUpFormProps } from "../types";
 
-export const SignUpForm = ({ onSubmit }: SignUpFormProps) => {
+export const SignUpForm = () => {
   return (
     <Stack
       width="100%"
