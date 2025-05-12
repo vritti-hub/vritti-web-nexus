@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material";
-import { SignUpForm } from "./components/SignUpForm/SignUpForm";
-import { SignUpInfoPanel } from "./components/SignUpInfoPanel/SignUpInfoPanel";
+
+import { SignUpForm } from "./SignUpForm";
+import { SignUpInfoPanel } from "./SignUpInfoPanel";
 
 export const SignUp = () => {
   return (
