@@ -9,7 +9,7 @@ const SignUp = lazy(() =>
 
 export const SignUpPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading</div>}>
       <SignUp />
     </Suspense>
   );
