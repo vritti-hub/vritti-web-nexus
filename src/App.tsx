@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useRoutes } from "react-router-dom";
-import { routes } from "./routes";
+import './App.css';
 
-export const App = () => {
-  useEffect(() => {
-    // Set margin to 0px on the body tag when the component mounts
-    document.body.style.margin = "0px";
-  }, []);
-  const app = useRoutes(routes);
-  return <>{app}</>;
+const App = () => {
+  return (
+    <div className="content">
+      <h1>Rsbuild with React</h1>
+      <p>Start building amazing things with Rsbuild.</p>
+    </div>
+  );
 };
+
+export default App;
