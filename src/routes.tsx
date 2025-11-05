@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { RemoteRoutes } from './utils/RemoteRoutes';
 
 const subDomain = window.location.hostname.split('.')[0];
 
@@ -6,13 +7,25 @@ export const isCloud = subDomain === 'cloud';
 
 export type Route = {
   path: string;
-  component: ReactNode;
+  element: ReactNode;
 };
 
-export const routes: Route[] = [];
+export const routes: Route[] = [
+  {
+    path: '/*',
+    element: (
+      <RemoteRoutes
+        remoteName="VrittiAuth"
+        moduleName="routes"
+        dataKey="authRoutes"
+      />
+    ),
+  },
+];
+
 if (isCloud) {
   routes.push({
-    path: '/cloud',
-    component: <>cloud</>,
+    path: '/cloud/*',
+    element: <>cloud</>,
   });
 }
