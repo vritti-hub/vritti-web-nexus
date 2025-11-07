@@ -9,6 +9,7 @@ export interface RemoteConfig {
   name: string;
   entry: string;
   exposedModule: string;
+  baseUrl?: string; // Base URL for loading remote assets like CSS
 }
 
 /**
@@ -18,8 +19,12 @@ export interface RemoteConfig {
 export const ALL_REMOTES: RemoteConfig[] = [
   {
     name: 'VrittiAuth',
-    entry: import.meta.env.VITE_VRITTI_AUTH_URL || 'http://localhost:3001/mf-manifest.json',
+    entry:
+      import.meta.env.VITE_VRITTI_AUTH_URL ||
+      'http://localhost:3001/mf-manifest.json',
     exposedModule: 'routes',
+    baseUrl:
+      import.meta.env.VITE_VRITTI_AUTH_BASE_URL || 'http://localhost:3001',
   },
   // Add more remotes as needed:
   // {

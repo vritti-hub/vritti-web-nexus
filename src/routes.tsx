@@ -12,7 +12,7 @@ export type Route = {
 
 export const routes: Route[] = [
   {
-    path: '/*',
+    path: '*',
     element: (
       <RemoteRoutes
         remoteName="VrittiAuth"

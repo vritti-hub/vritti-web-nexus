@@ -45,4 +45,5 @@ export default defineConfig({
       dts: false,
     }),
   ],
+  // PostCSS configuration is in postcss.config.mjs
 });

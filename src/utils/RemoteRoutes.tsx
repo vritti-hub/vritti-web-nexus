@@ -11,9 +11,10 @@ import { useRoutes } from 'react-router-dom';
 const loadRemoteModule = async (remoteName: string, moduleName: string) => {
   try {
     const module = await loadRemote(`${remoteName}/${moduleName}`);
+    console.log(`[RemoteRoutes] Loaded module ${remoteName}/${moduleName}:`, module);
     return (module as any)?.default || module;
   } catch (error) {
-    // Silently handle errors - component will show error state
+    console.error(`[RemoteRoutes] Failed to load ${remoteName}/${moduleName}:`, error);
     return undefined;
   }
 };
@@ -62,14 +63,17 @@ export const RemoteRoutes = ({
     const initializeRoutes = async () => {
       try {
         const loadedRoutes = await getRoutesFromRemote(remoteName, moduleName);
+        console.log(`[RemoteRoutes] Loaded routes from ${remoteName}:`, loadedRoutes);
 
         // Extract routes based on dataKey if provided, otherwise use the entire module
         const extractedRoutes =
           (dataKey ? loadedRoutes?.[dataKey] : loadedRoutes) || [];
 
+        console.log(`[RemoteRoutes] Extracted routes with dataKey="${dataKey}":`, extractedRoutes);
         setRoutes(extractedRoutes);
         setReady(true);
       } catch (error) {
+        console.error(`[RemoteRoutes] Error initializing routes:`, error);
         setErrorLoading(true);
       }
     };
@@ -94,6 +98,10 @@ export const RemoteRoutes = ({
   if (!ready) {
     return <div>Loading remote routes...</div>;
   }
+
+  // Debug: Log what useRoutes returned
+  console.log(`[RemoteRoutes] useRoutes returned:`, routing);
+  console.log(`[RemoteRoutes] Routes being used:`, routes);
 
   // Render the loaded routes
   return <Suspense fallback={<div>Loading...</div>}>{routing}</Suspense>;
