@@ -11,21 +11,16 @@ export type Route = {
 };
 
 export const routes: Route[] = [
-  {
-    path: '*',
-    element: (
-      <RemoteRoutes
-        remoteName="VrittiAuth"
-        moduleName="routes"
-        dataKey="authRoutes"
-      />
-    ),
-  },
+
 ];
 
 if (isCloud) {
   routes.push({
-    path: '/cloud/*',
-    element: <>cloud</>,
+    path: '/*',
+    element: <RemoteRoutes
+        remoteName="VrittiAuth"
+        moduleName="routes"
+        dataKey="authRoutes"
+      />,
   });
 }
